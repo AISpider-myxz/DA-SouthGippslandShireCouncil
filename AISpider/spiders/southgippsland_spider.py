@@ -361,7 +361,8 @@ class SouthgippslandSpider(scrapy.Spider):
             print('特殊情况未判定')
         src = soup.select_one('#ctl00_MainBodyContent_group_426 img').get('src')
         item['document'] = src
-        print(item)
+        item['metadata'] ={}
+        del item['metadata']
         yield item
     def parse_details2(self, response):
         item = Southgippsland()
@@ -441,5 +442,6 @@ class SouthgippslandSpider(scrapy.Spider):
             item['app_task_type'] = ''
             item['actual_started_date'] = 0
             item['actual_completed_date'] = 0
-        
+        item['metadata'] ={}
+        del item['metadata']
         yield item
